@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pratice_electronicsshop,access.pratice.electronicsshop,model_pratice_electronicsshop,,1,1,1,1
+access_pratice_pratice,access.pratice.pratice,model_pratice_pratice,,1,1,1,1

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_inherit" model="ir.ui.view">
+        <field name="name">purchase.order_inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+
+        <!-- <header>
+        <button id="button_done" name="action_done" string="Mark as done" class="btn-primary" states="confirm" type="object"/>
+        </header>
+         -->
+         <xpath expr="/form/header" position="inside">
+         </xpath>
+
+        <field name="partner_ref" position="after">
+        <field name="component_name" string='component_name'/>
+         </field>
+        
+      <xpath expr="/form/sheet/notebook" position="inside">
+                <page string="page Name">
+
+                <!-- <field name="Order filed name"/> -->
+                </page>
+           </xpath> 
+           <xpath expr="/form/sheet/notebook" position="inside">
+                <page string="Information">
+                
+            <group>
+                <group  string="Warehouse Information">
+                  <field name="Warehouse"/>
+                  <field name="Warehouse1"/>
+                </group>
+                <group  string="Delivery Person Information">
+                  <field name="Delivery"/>
+                  <field name="Delivery1"/>
+                  <field name="Delivery2"/>
+                </group>
+            </group>
+                </page>
+                </xpath>
+        </field>
+    </record>
+</odoo>

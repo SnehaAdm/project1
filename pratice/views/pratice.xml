@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="commponet_tree" model="ir.ui.view">
+        <field name="name">pratice.electronicsshop.tree</field>
+        <field name="model">pratice.electronicsshop</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="customer_name"/>
+                <field name="date_action" string="Date"/>
+                <field name="email_id" on_change="ValidateEmail()"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="commponet_kanban" model="ir.ui.view">
+        <field name="name">pratice.electronicsshop.kanban</field>
+        <field name="model">pratice.electronicsshop</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+                <field name="customer_name"/>
+                <field name="date_action" string="Date"/>
+                <field name="email_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li>
+                                        <field name="customer_name"/>
+                                    </li>
+                                    <li>
+                                        <field name="date_action"/>
+                                    </li>
+                                    <li>
+                                        <field name="email_id"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="commponet_form" model="ir.ui.view">
+        <field name="name">pratice.electronicsshop.form</field>
+        <field name="model">pratice.electronicsshop</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="customer_name"/>
+                            <field name="payment_terms"/>
+                            <field name="date_action" string="Date"/>
+                        </group>
+                        <!-- <group>
+                            <field name="cashbox_lines_ids" string="Cashbox"/>
+                        </group> -->
+                        <group>
+                            <field name="att" string="Attended"/>
+                            <!-- <field name="description" widget="html"/> -->
+                            <field name="gender" string="Gender"/>
+                            
+                        </group>
+                        <group>
+
+                            <!-- <field name="image" String="Image"/> -->
+
+                            <!-- <field name="email_id" on_change="ValidateEmail()"/> -->
+                            <!-- <field name="field_name" string="EMAIL"/> -->
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Order Lines">
+                            <field name ="pratice_line_ids">
+                                <tree string="Addition Information" editable="bottom">
+                                    <field name="commponet_name" string="Commponet Name"/>
+                                    <field name="note" string="Description"/>
+                                    <field name="quantity" string="Quantity"/>
+                                    <!-- <field name="currency_id" string="Currency"/> -->
+                                    <field name="unit_price" string="Unit Price"/>
+                                    <field name="tax_ids"/>
+                                    <field name="subtotal"/>
+
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="commponet_action" model="ir.actions.act_window">
+        <field name="name">Quotation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pratice.electronicsshop</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                    Create a new Commponet.
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem id="pratice_root" name="Electronics Shop" sequence="10"/>
+
+    <menuitem id="electronics_comm_root" name="Commponet" parent="pratice_root" sequence="10"/>
+
+    <menuitem id="commponets_name_root" name="Quotation" parent="pratice.electronics_comm_root" action="commponet_action" sequence="10"/>
+
+</odoo>

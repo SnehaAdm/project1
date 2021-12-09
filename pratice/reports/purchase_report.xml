@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+    	
+<report
+   id="action_report"
+   string="purchase_order_report"
+   model="purchase.order"
+   report_type="qweb-pdf"
+   file="pratice.sample_report"
+   name="pratice.sample_report"
+   print_report_name="'purchase_order_template- %s' % (object.name)"/>
+
+        <template id="sample_report">
+       <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.external_layout">
+               <div class="page">
+                   <h2>Request For Order</h2>
+                    <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th><strong>Sr. No.</strong></th>
+                                    <th><strong>Item Code</strong></th>
+                                    <th><strong>Product Name</strong></th>
+                                    
+                                    <th class="text-right"><strong>Qty</strong></th>
+                                     <th class="text-center" groups="uom.group_uom"> 
+                                        <strong>Product UoM</strong>
+                                    </th>
+                                    <th><strong>Rate</strong></th>
+                                    <th><strong>Amount</strong></th>
+                                    <th class="text-right"><strong>Delivery Date</strong></th>
+                                </tr>
+                            </thead>
+                    </table>       
+               </div>
+           </t>
+       </t>
+   </t>
+         
+        </template>
+
+    </data>
+</odoo>
